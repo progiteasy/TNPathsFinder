@@ -78,13 +78,17 @@ namespace TNPathsFinder.Models
         /// <returns>Время ожидания приезда следующего транспортного средства</returns>
         public TimeSpan CalculateWaitingTime(TransportStop sourceTransportStop, TimeSpan currentTime)
         {
+            var lastDepartureTime = OperatingHours.End - Route.TimeIntervals.Skip(Route.TransportStops.IndexOf(sourceTransportStop)).Sum();
+
+            if (currentTime > lastDepartureTime || currentTime < OperatingHours.Start)
+                return TimeSpan.MaxValue;
+
             var nextDepartureTime = OperatingHours.Start + Route.TimeIntervals.Take(Route.TransportStops.IndexOf(sourceTransportStop)).Sum();
 
             while (nextDepartureTime < currentTime && nextDepartureTime < OperatingHours.End)
                 nextDepartureTime += Route.TripTotalTime;
 
-            return (nextDepartureTime != OperatingHours.End) ? 
-                nextDepartureTime - currentTime : TimeSpan.MaxValue;
+            return nextDepartureTime - currentTime;
         }
 
         /// <summary>
