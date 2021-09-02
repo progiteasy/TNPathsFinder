@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31025.194
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TNPathsFinder", "TNPathsFinder\TNPathsFinder.csproj", "{AD73EC28-DD40-436A-846D-1B91CED97FD4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AD73EC28-DD40-436A-846D-1B91CED97FD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD73EC28-DD40-436A-846D-1B91CED97FD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD73EC28-DD40-436A-846D-1B91CED97FD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD73EC28-DD40-436A-846D-1B91CED97FD4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5B9C5662-F959-415B-A02C-EA577A58D42D}
+	EndGlobalSection
+EndGlobal
