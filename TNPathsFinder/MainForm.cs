@@ -69,7 +69,7 @@ namespace TNPathsFinder
 
                 var sourceStop = _finderManager.TransportStops[cbSourceTransportStops.SelectedIndex];
                 var destinationStop = _finderManager.TransportStops[cbDestinationTransportStops.SelectedIndex];
-                var tripStartTime = dtpDepartureTime.Value.TimeOfDay;
+                var tripStartTime = new TimeSpan(dtpDepartureTime.Value.TimeOfDay.Hours, dtpDepartureTime.Value.TimeOfDay.Minutes, 0);
 
                 await _finderManager.FinderEngine.FindMinPaths(sourceStop, destinationStop, tripStartTime);
 
