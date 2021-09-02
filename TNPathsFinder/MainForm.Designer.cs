@@ -76,6 +76,7 @@ namespace TNPathsFinder
             // gbTransportRoutes
             // 
             this.gbTransportRoutes.Controls.Add(this.tbTransportRoutes);
+            this.gbTransportRoutes.Enabled = false;
             this.gbTransportRoutes.Location = new System.Drawing.Point(12, 27);
             this.gbTransportRoutes.Name = "gbTransportRoutes";
             this.gbTransportRoutes.Size = new System.Drawing.Size(300, 400);
