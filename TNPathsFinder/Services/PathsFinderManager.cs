@@ -26,7 +26,7 @@ namespace TNPathsFinder
         /// <summary>
         /// Движок поиска минимальных путей в транспортной сети
         /// </summary>
-        public PathsFinderEngine FinderEngine { get; private set; }
+        public IPathsFinderEngine FinderEngine { get; }
 
         /// <summary>
         /// Конструктор класса без параметров
