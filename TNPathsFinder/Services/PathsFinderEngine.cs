@@ -114,10 +114,13 @@ namespace TNPathsFinder.Services
         /// <param name="paths">Исходный массив путей в сети общественного транспорта</param>
         /// <returns>Массив минимальных по стоимости проезда путей</returns>
         private TransportNetworkPath[] FindMinCostPaths(TransportNetworkPath[] paths)
-            => paths.Where(path => path.TotalTime != TimeSpan.MaxValue)
-                    .OrderBy(path => path.TotalCost)
-                    .TakeWhile(path => path.TotalCost == paths.First().TotalCost)
-                    .ToArray();
+        {
+            var orderedByCostPaths = paths.Where(path => path.TotalTime != TimeSpan.MaxValue).OrderBy(path => path.TotalCost);
+            var minCostPath = orderedByCostPaths.First();
+            var allfFoundMinCostPaths = orderedByCostPaths.TakeWhile(path => path.TotalCost == minCostPath.TotalCost);
+
+            return allfFoundMinCostPaths.ToArray();
+        }
 
         /// <summary>
         /// Метод нахождения в заданном массиве минимальных по времени поездки путей
@@ -125,10 +128,13 @@ namespace TNPathsFinder.Services
         /// <param name="paths">Исходный массив путей в сети общественного транспорта</param>
         /// <returns>Массив минимальных по времени поездки путей</returns>
         private TransportNetworkPath[] FindMinTimePaths(TransportNetworkPath[] paths)
-            => paths.Where(path => path.TotalTime != TimeSpan.MaxValue)
-                    .OrderBy(path => path.TotalTime)
-                    .TakeWhile(path => path.TotalTime == paths.First().TotalTime)
-                    .ToArray();
+        {
+            var orderedByTimePaths = paths.Where(path => path.TotalTime != TimeSpan.MaxValue).OrderBy(path => path.TotalTime);
+            var minTimePath = orderedByTimePaths.First();
+            var allfFoundMinTimePaths = orderedByTimePaths.TakeWhile(path => path.TotalTime == minTimePath.TotalTime);
+
+            return allfFoundMinTimePaths.ToArray();
+        }
 
         /// <summary>
         /// Конструктор класса с заданными параметрами
@@ -155,7 +161,7 @@ namespace TNPathsFinder.Services
 
             if (!allFoundTransportNetworkPaths.Any())
                 return;
-
+ 
             MinCostPaths = new ReadOnlyCollection<TransportNetworkPath>(FindMinCostPaths(allFoundTransportNetworkPaths));
             MinTimePaths = new ReadOnlyCollection<TransportNetworkPath>(FindMinTimePaths(allFoundTransportNetworkPaths));
         }
